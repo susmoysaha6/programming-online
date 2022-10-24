@@ -5,7 +5,7 @@ import { router } from './Routes/Routes/Routes';
 
 function App() {
   return (
-    <div className="App">
+    <div className=" dark:bg-blue-900">
       <Flowbite>
         <RouterProvider router={router}></RouterProvider>
       </Flowbite>

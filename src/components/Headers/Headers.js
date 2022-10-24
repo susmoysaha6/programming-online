@@ -21,26 +21,26 @@ const Headers = () => {
             </Navbar.Brand>
             <div className="flex md:order-2">
                 <Button>
-                    Get started
+                    LOG OUT
                 </Button>
                 <Navbar.Toggle />
             </div>
             <Navbar.Collapse>
                 <Link to='/'
                 >
-                    Home
+                    HOME
                 </Link>
-                <Link to="/">
-                    About
+                <Link to="/courses">
+                    COURSES
                 </Link>
-                <Link to="/">
-                    Services
+                <Link to="/faq">
+                    FAQ
                 </Link>
-                <Link to="/">
-                    Pricing
+                <Link to="/blog">
+                    BLOG
                 </Link>
-                <Link to="/">
-                    Contact
+                <Link to="/login">
+                    LOG IN
                 </Link>
             </Navbar.Collapse>
             <DarkThemeToggle />
