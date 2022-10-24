@@ -127,7 +127,7 @@ const Headers = () => {
                                         </div>
                                     </div>
                                     <nav>
-                                        <ul className="space-y-4 text-gray-500 ">
+                                        <ul className="space-y-4 text-gray-500 flex flex-col items-center ">
                                             <li>
                                                 <Link className='my-2' to='/'
                                                 >
