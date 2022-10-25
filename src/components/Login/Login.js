@@ -41,9 +41,9 @@ const Login = () => {
                     LOG IN
                 </Button>
             </form>
-            <p className='text-center text-slate-500 my-5'>----Or----</p>
-            <Button color="dark" className='w-full my-5'> <FaGoogle /> Sign in with Google</Button>
-            <Button color="dark" className='w-full my-5'><FaGithub /> Sign in with Github</Button>
+            <p className='text-center text-slate-500 my-5 font-bold text-lg'>Or</p>
+            <Button color="dark" className='w-full my-5'> <FaGoogle /> <span className='ml-2'>Sign in with Google</span> </Button>
+            <Button color="dark" className='w-full my-5'> <FaGithub /> <span className='ml-2'>Sign in with Github</span> </Button>
             <p className=''>Don't have Account?  <Link className='text-blue-500  items-center' to='/register'> Register here. </Link> </p>
         </div>
     );

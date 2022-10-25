@@ -8,7 +8,7 @@ const Headers = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
-        <div className="bg-gray-900">
+        <div className="bg-slate-800 text-white">
             <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="relative flex items-center justify-between">
                     <Link
@@ -55,7 +55,11 @@ const Headers = () => {
                             <Link className='my-2' to="/login">
                                 LOG IN
                             </Link>
-
+                        </li>
+                        <li>
+                            <Link className='my-2' to="/register">
+                                REGISTER
+                            </Link>
                         </li>
                         <Tooltip content="Tooltip content mx-auto">
                             <img alt="" className="w-10 h-10  rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-sky-400 ring-offset-gray-800" src="https://source.unsplash.com/40x40/?portrait?1" />
@@ -155,7 +159,11 @@ const Headers = () => {
                                                 <Link className='my-2' to="/login">
                                                     LOG IN
                                                 </Link>
-
+                                            </li>
+                                            <li>
+                                                <Link className='my-2' to="/register">
+                                                    REGISTER
+                                                </Link>
                                             </li>
                                             <Tooltip content="Tooltip content mx-auto">
                                                 <img alt="" className="w-10 h-10  rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-sky-400 ring-offset-gray-800" src="https://source.unsplash.com/40x40/?portrait?1" />
