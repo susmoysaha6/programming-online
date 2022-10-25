@@ -7,9 +7,14 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 
 const Headers = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
 
     return (
         <div className="bg-slate-800 text-white">
@@ -57,11 +62,10 @@ const Headers = () => {
                         </li>
                         {user?.uid ?
                             <>
-                                <Tooltip content={user?.displayName}>
+                                <Tooltip content={user.displayName ? user.displayName : 'user'}>
                                     <img alt="" className="w-10 h-10  rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-sky-400 ring-offset-gray-800" src={user?.photoURL} />
                                 </Tooltip>
-
-                                <Button >
+                                <Button onClick={handleLogOut} >
                                     LOG OUT
                                 </Button>
                             </>
@@ -167,11 +171,10 @@ const Headers = () => {
                                             </li>
                                             {user?.uid ?
                                                 <>
-                                                    <Tooltip content={user?.displayName}>
+                                                    <Tooltip content={user.displayName ? user.displayName : 'user'}>
                                                         <img alt="" className="w-10 h-10  rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-sky-400 ring-offset-gray-800" src={user?.photoURL} />
                                                     </Tooltip>
-
-                                                    <Button >
+                                                    <Button onClick={handleLogOut}  >
                                                         LOG OUT
                                                     </Button>
                                                 </>
