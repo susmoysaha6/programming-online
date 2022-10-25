@@ -7,7 +7,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Register = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -24,6 +24,7 @@ const Register = () => {
                 setError('');
                 navigate('/');
                 form.reset();
+                handleUpdateUserProfile(name, photoURL);
                 toast.success('Your has been created successfully.Please Varify your email')
             })
             .catch(error => {
@@ -32,6 +33,19 @@ const Register = () => {
                 toast.error(error.message);
             })
     }
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+
     return (
         <div className='w-3/4 md:w-1/2 lg:w-1/4 mx-auto my-5 py-5 shadow-lg px-5 rounded-lg border'>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
