@@ -1,11 +1,13 @@
 import { Button, DarkThemeToggle, Tooltip } from 'flowbite-react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import po from '../../assets/po.png'
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 
 const Headers = () => {
+    const { user } = useContext(AuthContext);
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -53,27 +55,29 @@ const Headers = () => {
                                 BLOG
                             </Link>
                         </li>
+                        {user?.uid ?
+                            <>
+                                <Tooltip content={user?.displayName}>
+                                    <img alt="" className="w-10 h-10  rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-sky-400 ring-offset-gray-800" src={user?.photoURL} />
+                                </Tooltip>
 
-                        <Tooltip content="Tooltip content mx-auto">
-                            <img alt="" className="w-10 h-10  rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-sky-400 ring-offset-gray-800" src="https://source.unsplash.com/40x40/?portrait?1" />
-                        </Tooltip>
-
-                        <Button >
-                            LOG OUT
-                        </Button>
-
-
-
-                        <li>
-                            <Link className='my-2' to="/login">
-                                LOG IN
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className='my-2' to="/register">
-                                REGISTER
-                            </Link>
-                        </li>
+                                <Button >
+                                    LOG OUT
+                                </Button>
+                            </>
+                            :
+                            <>
+                                <li>
+                                    <Link className='my-2' to="/login">
+                                        LOG IN
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link className='my-2' to="/register">
+                                        REGISTER
+                                    </Link>
+                                </li>
+                            </>}
                         <DarkThemeToggle />
                     </ul>
                     <div className="lg:hidden">
@@ -161,24 +165,29 @@ const Headers = () => {
                                                     BLOG
                                                 </Link>
                                             </li>
-                                            <Tooltip content="Tooltip content mx-auto">
-                                                <img alt="" className="w-10 h-10  rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-sky-400 ring-offset-gray-800" src="https://source.unsplash.com/40x40/?portrait?1" />
-                                            </Tooltip>
+                                            {user?.uid ?
+                                                <>
+                                                    <Tooltip content={user?.displayName}>
+                                                        <img alt="" className="w-10 h-10  rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-sky-400 ring-offset-gray-800" src={user?.photoURL} />
+                                                    </Tooltip>
 
-                                            <Button >
-                                                LOG OUT
-                                            </Button>
-                                            <li>
-                                                <Link className='my-2' to="/login">
-                                                    LOG IN
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link className='my-2' to="/register">
-                                                    REGISTER
-                                                </Link>
-                                            </li>
-
+                                                    <Button >
+                                                        LOG OUT
+                                                    </Button>
+                                                </>
+                                                :
+                                                <>
+                                                    <li>
+                                                        <Link className='my-2' to="/login">
+                                                            LOG IN
+                                                        </Link>
+                                                    </li>
+                                                    <li>
+                                                        <Link className='my-2' to="/register">
+                                                            REGISTER
+                                                        </Link>
+                                                    </li>
+                                                </>}
                                             <DarkThemeToggle />
                                         </ul>
                                     </nav>
