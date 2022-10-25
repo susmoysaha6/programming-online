@@ -56,8 +56,8 @@ const Register = () => {
     }
 
     return (
-        <div className='w-3/4 md:w-1/2 lg:w-1/4 mx-auto my-5 py-5 shadow-lg px-5 rounded-lg border'>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <div className='w-5/6 md:w-1/2 lg:w-1/4 mx-auto my-10 py-5 shadow-lg px-5 rounded-lg border'>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4 my-10">
                 <p className='text-center text-3xl font-semibold'>Register</p>
                 <div>
                     <div className="mb-2 block">
@@ -123,7 +123,7 @@ const Register = () => {
                 <Button type="submit">
                     REGISTER
                 </Button>
-                <p className=''>Already have an account?  <Link className='text-blue-500  items-center' to='/login'> Login Here. </Link> </p>
+                <p className='text-lg font-semibold'>Already have an account?  <Link className='text-blue-400  items-center' to='/login'> Login Here. </Link> </p>
             </form>
         </div>
     );

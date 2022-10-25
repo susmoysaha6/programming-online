@@ -72,9 +72,9 @@ const Login = () => {
     }
 
     return (
-        <div className='w-3/4 md:w-1/2 lg:w-1/4 mx-auto my-5 py-5 shadow-lg px-5 rounded-lg border'>
+        <div className='w-5/6 md:w-1/2 lg:w-1/4 mx-auto my-10 py-5 shadow-lg px-5 rounded-lg border'>
             <p className='text-center text-3xl font-semibold'>Log in</p>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4 my-10">
                 <div>
                     <div className="mb-2 block">
                         <Label
@@ -105,7 +105,7 @@ const Login = () => {
                         placeholder="Enter Your Password"
                         required={true}
                     />
-                    <p>Forget Password <button onClick={handleReset} className='text-blue-700'>Click Here </button></p>
+
                 </div>
                 <p className='text-xl text-red-600'>{error}</p>
                 <Button type="submit">
@@ -113,13 +113,14 @@ const Login = () => {
                 </Button>
 
             </form>
+            <p className='mt-3 text-lg font-semibold'>Forget Password <button onClick={handleReset} className='text-blue-400'>Click Here </button></p>
             <p className='text-center text-slate-500 my-5 font-bold text-lg'>Or</p>
             <>
-                <Button onClick={handleGoogleSignIn} color="dark" className='w-full my-5'> <FaGoogle /> <span className='ml-2'>Sign in with Google</span> </Button>
-                <Button onClick={handleGithubSignIn} color="dark" className='w-full my-5'> <FaGithub /> <span className='ml-2'>Sign in with Github</span> </Button>
+                <Button onClick={handleGoogleSignIn} color="dark" className='w-full my-5'> <FaGoogle className='text-lg' /> <span className='ml-2 text-lg'>Sign in with Google</span> </Button>
+                <Button onClick={handleGithubSignIn} color="dark" className='w-full my-5'> <FaGithub className='text-lg' /> <span className='ml-2 text-lg'>Sign in with Github</span> </Button>
             </>
 
-            <p className=''>Don't have Account?  <Link className='text-blue-500  items-center' to='/register'> Register here. </Link> </p>
+            <p className='text-lg font-semibold'>Don't have Account?  <Link className='text-blue-400  items-center' to='/register'> Register here. </Link> </p>
         </div>
     );
 };
