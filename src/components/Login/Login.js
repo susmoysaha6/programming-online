@@ -36,6 +36,7 @@ const Login = () => {
     }
     return (
         <div className='w-3/4 md:w-1/2 lg:w-1/4 mx-auto my-5 py-5 shadow-lg px-5 rounded-lg border'>
+            <p className='text-center text-3xl font-semibold'>Log in</p>
             <form className="flex flex-col gap-4">
                 <div>
                     <div className="mb-2 block">
