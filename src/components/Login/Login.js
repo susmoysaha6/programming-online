@@ -7,8 +7,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const [userEmail, setUserEmail] = useState('');
     const [error, setError] = useState('');
-    const { providerLogin, signIn, setLoading } = useContext(AuthContext);
+    const { providerLogin, signIn, setLoading, resetPassword } = useContext(AuthContext);
     // console.log(providerLogin);
     const navigate = useNavigate();
     const googleProvider = new GoogleAuthProvider();
@@ -19,8 +20,8 @@ const Login = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                navigate('/')
-                toast.success('You have signed in with google')
+                navigate('/');
+                toast.success('You have signed in with google');
                 console.log(user);
             })
             .catch(error => console.error(error));
@@ -29,12 +30,14 @@ const Login = () => {
         providerLogin(githubProvider)
             .then(result => {
                 const user = result.user;
-                navigate('/')
-                toast.success('You have signed in with github')
+                navigate('/');
+                toast.success('You have beem signed in with github')
                 console.log(user);
             })
             .catch(error => console.error(error));
     }
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -59,6 +62,14 @@ const Login = () => {
                 setLoading(false);
             })
     }
+    // reset password
+    const handleReset = () => {
+        resetPassword(userEmail)
+            .then(() => {
+                toast.success('Reset link has been sent, please check email')
+            })
+            .catch(error => toast.error(error.message))
+    }
 
     return (
         <div className='w-3/4 md:w-1/2 lg:w-1/4 mx-auto my-5 py-5 shadow-lg px-5 rounded-lg border'>
@@ -72,6 +83,7 @@ const Login = () => {
                         />
                     </div>
                     <TextInput
+                        onBlur={e => setUserEmail(e.target.value)}
                         id="email1"
                         type="email"
                         name='email'
@@ -93,11 +105,13 @@ const Login = () => {
                         placeholder="Enter Your Password"
                         required={true}
                     />
+                    <p>Forget Password <button onClick={handleReset} className='text-blue-700'>Click Here </button></p>
                 </div>
                 <p className='text-xl text-red-600'>{error}</p>
                 <Button type="submit">
                     LOG IN
                 </Button>
+
             </form>
             <p className='text-center text-slate-500 my-5 font-bold text-lg'>Or</p>
             <>

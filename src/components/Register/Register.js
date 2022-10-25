@@ -7,7 +7,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Register = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -25,7 +25,8 @@ const Register = () => {
                 navigate('/');
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
-                toast.success('Your has been created successfully.Please Varify your email')
+                handleEmailVerification();
+                toast.success('Your has been created successfully.Please Verify your email')
             })
             .catch(error => {
                 console.error(error);
@@ -40,6 +41,14 @@ const Register = () => {
             photoURL: photoURL
         }
         updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => {
+                console.error(error);
+            })
+    };
+
+    const handleEmailVerification = () => {
+        verifyEmail()
             .then(() => { })
             .catch(error => {
                 console.error(error);
