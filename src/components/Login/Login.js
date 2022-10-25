@@ -1,13 +1,14 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { Button, Label, TextInput } from 'flowbite-react';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { providerLogin } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const { providerLogin, signIn, setLoading } = useContext(AuthContext);
     // console.log(providerLogin);
     const navigate = useNavigate();
     const googleProvider = new GoogleAuthProvider();
@@ -34,10 +35,35 @@ const Login = () => {
             })
             .catch(error => console.error(error));
     }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+                setError('');
+                navigate('/');
+                toast.success("Your log in has been successful")
+            })
+            .catch(error => {
+                console.error(error);
+                setError(error.message);
+                toast.error(error.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            })
+    }
+
     return (
         <div className='w-3/4 md:w-1/2 lg:w-1/4 mx-auto my-5 py-5 shadow-lg px-5 rounded-lg border'>
             <p className='text-center text-3xl font-semibold'>Log in</p>
-            <form className="flex flex-col gap-4">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div>
                     <div className="mb-2 block">
                         <Label
@@ -68,6 +94,7 @@ const Login = () => {
                         required={true}
                     />
                 </div>
+                <p className='text-xl text-red-600'>{error}</p>
                 <Button type="submit">
                     LOG IN
                 </Button>
