@@ -31,13 +31,13 @@ export const router = createBrowserRouter([
                     {
                         path: '/courses',
                         element: <CourseComponent></CourseComponent>,
-                        loader: () => fetch('http://localhost:5000/courses')
+                        loader: () => fetch('https://e-learning-server-mauve.vercel.app/courses')
 
                     },
                     {
                         path: '/courses/category/:id',
                         element: <CategoryCourse></CategoryCourse>,
-                        loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                        loader: ({ params }) => fetch(`https://e-learning-server-mauve.vercel.app/category/${params.id}`)
                     },
                 ]
             },
@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
             {
                 path: '/course/:id',
                 element: <SingleCourse></SingleCourse>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://e-learning-server-mauve.vercel.app/courses/${params.id}`)
             }
             ,
             {
@@ -68,7 +68,7 @@ export const router = createBrowserRouter([
             {
                 path: '/checkout/:id',
                 element: <PrivateRoutes><CheckOut></CheckOut></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`),
+                loader: ({ params }) => fetch(`https://e-learning-server-mauve.vercel.app/courses/${params.id}`),
             }
         ]
     }

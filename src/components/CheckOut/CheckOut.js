@@ -1,5 +1,5 @@
 import { Button } from 'flowbite-react';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import toast from 'react-hot-toast';
 import { FaArrowLeft } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
