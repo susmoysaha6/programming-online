@@ -1,17 +1,16 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import LeftSideNav from '../components/LeftSideNav/LeftSideNav';
 
-const Courses = () => {
+const CourseLayout = () => {
     return (
         <div className='grid grid-cols-4'>
-            <div>Side</div>
-
+            <LeftSideNav></LeftSideNav>
             <div className='col-span-3'>
-                <p>a</p>
                 <Outlet></Outlet>
             </div>
         </div>
     );
 };
 
-export default Courses;
+export default CourseLayout;

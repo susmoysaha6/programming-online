@@ -1,12 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../../components/Blog/Blog";
-import Courses from "../../components/Courses/Courses";
+import CategoryCourse from "../../components/CategoryCourse/CategoryCourse";
+import CourseComponent from "../../components/CourseComponent/CourseComponent";
+import SingleCourse from "../../components/SingleCourse/SingleCourse";
 import ErrorPage from "../../components/ErrorPage/ErrorPage";
 import Faq from "../../components/Faq/Faq";
 import Home from "../../components/Home/Home";
 import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
 import Main from "../../layout/Main";
+import CourseLayout from "../../layout/CourseLayout";
+
 
 export const router = createBrowserRouter([
     {
@@ -20,8 +24,29 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/courses',
-                element: <Courses></Courses>
+                element: <CourseLayout></CourseLayout>,
+                children: [
+                    {
+                        path: '/courses',
+                        element: <CourseComponent></CourseComponent>,
+                        loader: () => fetch('http://localhost:5000/courses')
+
+                    },
+                    {
+                        path: '/courses/category/:id',
+                        element: <CategoryCourse></CategoryCourse>,
+                        loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                    },
+                ]
             },
+
+
+            {
+                path: '/course/:id',
+                element: <SingleCourse></SingleCourse>,
+                loader: ({ params }) => `http://localhost:5000/courses/${params.id}`
+            }
+            ,
             {
                 path: '/faq',
                 element: <Faq></Faq>
