@@ -3,7 +3,7 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
@@ -12,6 +12,11 @@ const Login = () => {
     const { providerLogin, signIn, setLoading, resetPassword } = useContext(AuthContext);
     // console.log(providerLogin);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+
+
     const googleProvider = new GoogleAuthProvider();
 
     const githubProvider = new GithubAuthProvider();
@@ -20,21 +25,27 @@ const Login = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                navigate('/');
+                navigate(from, { replace: true });
                 toast.success('You have signed in with google');
                 console.log(user);
             })
-            .catch(error => console.error(error));
+            .catch(error => console.error(error))
+            .finally(() => {
+                setLoading(false);
+            })
     }
     const handleGithubSignIn = () => {
         providerLogin(githubProvider)
             .then(result => {
                 const user = result.user;
-                navigate('/');
+                navigate(from, { replace: true });
                 toast.success('You have beem signed in with github')
                 console.log(user);
             })
-            .catch(error => console.error(error));
+            .catch(error => console.error(error))
+            .finally(() => {
+                setLoading(false);
+            })
     }
 
 
@@ -50,7 +61,7 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
-                navigate('/');
+                navigate(from, { replace: true });
                 toast.success("Your log in has been successful")
             })
             .catch(error => {

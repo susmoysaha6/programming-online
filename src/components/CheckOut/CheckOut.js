@@ -1,13 +1,13 @@
 import { Button } from 'flowbite-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaArrowLeft } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const CheckOut = () => {
-    const { state } = useLocation();
-    const { title, price } = state;
-    console.log(title, price);
+    const course = useLoaderData();
+    const { title, price } = course;
+
     const handlePurchage = () => {
         toast.success('Congrats, Now you have the premium access')
     }
@@ -24,7 +24,7 @@ const CheckOut = () => {
                             <div className="flex flex-col p-6 space-y-6 mx-auto rounded shadow sm:p-8 dark:bg-gray-900">
                                 <div className="space-y-2">
                                     <h4 className="text-2xl font-bold">Professional</h4>
-                                    <span className="text-6xl font-bold">Price: $ {price}</span>
+                                    <span className="text-2xl lg:text-6xl font-bold">Price: $ {price}</span>
                                 </div>
                                 <p className="mt-3 leading-relaxed dark:text-gray-400">What will you get from this premium access?</p>
                                 <ul className="flex-1 mb-6 dark:text-gray-400">
