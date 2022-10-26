@@ -4,9 +4,9 @@ import LeftSideNav from '../components/LeftSideNav/LeftSideNav';
 
 const CourseLayout = () => {
     return (
-        <div className='grid grid-cols-4'>
+        <div className='grid md:grid-cols-4'>
             <LeftSideNav></LeftSideNav>
-            <div className='col-span-3'>
+            <div className='mx-auto md:col-span-3'>
                 <Outlet></Outlet>
             </div>
         </div>
