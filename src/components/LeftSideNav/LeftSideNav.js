@@ -10,10 +10,10 @@ const LeftSideNav = () => {
             .then(data => setCategories(data))
     }, [])
     return (
-        <div className='my-5 py-5 mx-auto'>
-            <h3 className='text-2xl'>Course Categories</h3>
+        <div className='my-20 py-5 w-11/12 mx-auto  rounded-lg shadow-lg h-fit border'>
+            <h3 className='text-2xl text-center font-semibold'>Course Categories</h3>
             {
-                categories.map(category => <Button className='my-5 w-full' key={category.id}><Link to={`/courses/category/${category.id}`}>{category.name}</Link> </Button>)
+                categories.map(category => <Button className='my-5 w-11/12 mx-auto shadow-lg' key={category.id}><Link to={`/courses/category/${category.id}`}>{category.name}</Link> </Button>)
             }
         </div>
 
