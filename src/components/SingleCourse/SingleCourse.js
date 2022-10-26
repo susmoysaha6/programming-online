@@ -1,6 +1,6 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { FaDownload, FaStar } from 'react-icons/fa';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import { FaDownload, FaGem, FaStar } from 'react-icons/fa';
 
 // import ReactToPdf from '/react-to-pdf
 import Pdf from "react-to-pdf";
@@ -9,21 +9,26 @@ import { Button } from 'flowbite-react';
 const SingleCourse = () => {
     const singleCourseDetails = useLoaderData();
     console.log(singleCourseDetails);
-    const { title, image_url, price, rating, instructor, instructor_thumbnail, details, category_id } = singleCourseDetails;
+    const { title, image_url, price, rating, instructor, instructor_thumbnail, details, category_id, _id } = singleCourseDetails;
     console.log(singleCourseDetails);
+    const navigate = useNavigate();
     const ref = React.createRef();
+    const handlePremiumAccess = () => {
+        navigate(`/checkout/${_id}`, { state: { title, price } });
+    }
     return (
         <div>
-            <div className='flex items-center justify-evenly'>
-                <h3 className='text-4xl my-5 text-center font-semibold'>Wanna doewnload this as pdf?</h3>
+            <div className='flex items-center justify-evenly   shadow-lg'>
+                <h3 className='md:text-4xl my-5  md:font-semibold'>Wanna doewnload this as pdf?</h3>
                 <Pdf targetRef={ref} filename="code-example.pdf">
-                    {({ toPdf }) => <Button onClick={toPdf}> Download Pdf <FaDownload /></Button>}
+                    {({ toPdf }) => <Button onClick={toPdf}> Download Pdf <FaDownload className='mx-2' /></Button>}
                 </Pdf>
             </div>
             <div ref={ref} className='w-11/12 mx-auto my:6 md:my-12 shadow-lg '>
                 <h3 className='text-5xl my-5 text-center font-semibold'>THE COURSE IS ON {title}</h3>
                 <div className='lg:w-1/2 mx-auto'>
                     <img className='mx-auto' src={image_url} alt="" />
+                    <Button onClick={handlePremiumAccess} className='mx-auto my-5'><FaGem className='mx-2' /> Get Premium Access</Button>
                     <div className='flex  justify-evenly'>
                         <div className='flex items-center my-5'>
                             <p className='px-2 text-2xl font-semibold'>Instructor: </p>
