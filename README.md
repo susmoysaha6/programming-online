@@ -1,3 +1,26 @@
+# Project Name: Programming Online
+
+## Live Website: https://e-learning-f8aae.web.app/
+
+### Features and Functionality
+
+* It is a single page application
+* Used react-router-dom for routing
+* I used two layout one for root and another for courses route.
+* One can find the courses by category, click on category on the leftside in courses route 
+* These is a route for login and a route for registration.
+* Also have google and github login system.
+* In login , password reset system implemented
+* There is a private route for premium access.
+
+### Technology used:
+* React
+* React-Router-Dom
+* Tailwind CSS
+* Firebase
+* React-to-pdf
+* Context API
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
