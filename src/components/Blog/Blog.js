@@ -5,7 +5,7 @@ const Blog = () => {
     return (
         <div className='my-20'>
             <h2 className='text-3xl font-bold text-center my-5 text-slate-600 dark:text-sky-400'>The Blog Section</h2>
-            <h4 className='text-2xl font-semibold text-center my-5 text-slate-600 dark:text-sky-400'>Publish by expart</h4>
+            <h4 className='text-2xl font-semibold text-center my-5 text-slate-600 dark:text-sky-400'>Publish by exparts</h4>
             <Accordion alwaysOpen={true} className='md:w-3/4 lg:w-1/2 mx-auto text-xl font font-semibold mt-12 mb-96 ' >
                 <Accordion.Panel>
                     <Accordion.Title>
