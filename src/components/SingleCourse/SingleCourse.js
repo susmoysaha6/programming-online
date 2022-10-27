@@ -8,9 +8,7 @@ import { Button } from 'flowbite-react';
 
 const SingleCourse = () => {
     const singleCourseDetails = useLoaderData();
-    console.log(singleCourseDetails);
     const { title, image_url, price, rating, instructor, instructor_thumbnail, details, category_id, _id, total_purchase } = singleCourseDetails;
-    console.log(singleCourseDetails);
     const navigate = useNavigate();
     const ref = React.createRef();
     const handlePremiumAccess = () => {
@@ -28,7 +26,6 @@ const SingleCourse = () => {
                 <h3 className='text-5xl my-5 text-center font-semibold'>THE COURSE IS ON {title}</h3>
                 <div className='lg:w-1/2 mx-auto'>
                     <img className='mx-auto' src={image_url} alt="" />
-                    <Button onClick={handlePremiumAccess} className='mx-auto my-5'><FaGem className='mx-2' /> Get Premium Access</Button>
                     <div className='flex  justify-evenly'>
                         <div className='flex items-center my-5'>
                             <p className='px-2 md:text-2xl md:font-semibold'>Instructor: </p>
@@ -45,6 +42,7 @@ const SingleCourse = () => {
                 </ol>
                 <p className='my-6 font-bold md:text-xl mx-5 px-4'><span className='text-blue-500'>Course Description:</span> {details}</p>
             </div>
+            <Button onClick={handlePremiumAccess} className='mx-auto my-5 py-5'><FaGem className='mx-2' /> Get Premium Access</Button>
         </div>
 
     );

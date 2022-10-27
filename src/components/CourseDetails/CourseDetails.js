@@ -4,8 +4,6 @@ import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const CourseDetails = ({ course }) => {
-    console.log(course);
-
     const { title, image_url, _id, price, rating, instructor } = course;
     return (
         <div className="max-w-sm h-full ">
