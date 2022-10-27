@@ -13,7 +13,7 @@ const LeftSideNav = () => {
         <div className='my-20 py-5 w-11/12 mx-auto  rounded-lg shadow-2xl h-fit '>
             <h3 className='text-2xl text-center font-semibold'>Course Categories</h3>
             {
-                categories.map(category => <Button className='my-5 w-11/12 mx-auto shadow-lg' key={category.id}><Link to={`/courses/category/${category.id}`}>{category.name}</Link> </Button>)
+                categories.map(category => <Link key={category.id} to={`/courses/category/${category.id}`}><Button className='my-5 w-11/12 mx-auto shadow-lg'> {category.name} </Button></Link>)
             }
         </div>
 
