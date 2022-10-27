@@ -8,8 +8,11 @@ const CheckOut = () => {
     const course = useLoaderData();
     const { title, price } = course;
 
-    const handlePurchage = () => {
-        toast.success('Congrats, Now you have the premium access')
+    const handlePurchage = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        form.reset();
+        toast.success('Congrats, Now you have the premium access');
     }
     return (
         <div>
@@ -47,7 +50,12 @@ const CheckOut = () => {
                                         <span>Live session on demand</span>
                                     </li>
                                 </ul>
-                                <button type="button" onClick={handlePurchage} className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded dark:bg-sky-400 dark:text-gray-900">Buy Now!</button>
+                                <form onSubmit={handlePurchage} >
+                                    <input type="text" className='dark:bg-slate-700 border-none rounded w-full my-4' placeholder='Enter your fullname' required />
+                                    <input type="text" className='dark:bg-slate-700 border-none rounded w-full my-4' placeholder='Enter your occupation' required />
+                                    <input type="text" className='dark:bg-slate-700 border-none rounded w-full my-4' placeholder='Enter your debit/credit card no' required />
+                                    <button type="submit" className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-sky-400 dark:text-gray-900">Buy Now!</button>
+                                </form>
                             </div>
                         </div>
                     </div>
