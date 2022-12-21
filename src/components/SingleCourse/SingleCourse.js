@@ -17,14 +17,14 @@ const SingleCourse = () => {
     return (
         <div>
             <div className='flex items-center justify-evenly   shadow-lg'>
-                <h3 className='md:text-4xl my-5  md:font-semibold'>Wanna doewnload this as pdf?</h3>
+                <h3 className='md:text-4xl my-5  md:font-semibold'>Wanna download this as pdf?</h3>
                 <Pdf targetRef={ref} filename="code-example.pdf">
                     {({ toPdf }) => <Button onClick={toPdf}> Download Pdf <FaDownload className='mx-2' /></Button>}
                 </Pdf>
             </div>
-            <div ref={ref} className='w-11/12 mx-auto my:6 md:my-12 shadow-lg '>
+            <div ref={ref} className='max-w-[800px] mx-auto my:6 md:my-12 shadow-lg '>
                 <h3 className='text-5xl my-5 text-center font-semibold'>THE COURSE IS ON {title}</h3>
-                <div className='lg:w-1/2 mx-auto'>
+                <div className=' mx-auto'>
                     <img className='mx-auto' src={image_url} alt="" />
                     <div className='flex  justify-evenly'>
                         <div className='flex items-center my-5'>
@@ -40,7 +40,7 @@ const SingleCourse = () => {
                     <li>Purchased By: {total_purchase} people</li>
                     <li>Category: {category_id === "01" ? "Front-End" : category_id === "02" ? "Back-end" : "Database"}</li>
                 </ol>
-                <p className='my-6 font-bold md:text-xl mx-5 px-4'><span className='text-blue-500'>Course Description:</span> {details}</p>
+                <p className='my-6 font-bold md:text-xl mx-5 px-4 pb-5'><span className='text-blue-500'>Course Description:</span> {details}</p>
             </div>
             <Button onClick={handlePremiumAccess} className='mx-auto my-5 py-5'><FaGem className='mx-2' /> Get Premium Access</Button>
         </div>
